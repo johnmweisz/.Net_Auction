@@ -1,0 +1,28 @@
+<partial name="_HeaderPartial"/>
+@model Display
+
+<h2>Item: @Model.Item.Name For Auction By: @Model.Item.Seller.FirstName</h2>
+<h3>Time Remaining: @Model.Item.TimeRemaining Days</h3>
+<p>Description: @Model.Item.Description</p>
+
+@{
+    if(Model.Item.Seller.UserId == ViewBag.User.UserId && @Model.Item.Bids.Count <= 1)
+    {
+        <h5>Starting Bid</h5>
+        <p>$ @Model.Item.Bids.OrderByDescending(i => i.Ammount).First().Ammount</p>
+    }
+    else
+    {
+        <h5>Current Highest Bid</h5>
+        <p>$ @Model.Item.Bids.OrderByDescending(i => i.Ammount).First().Ammount By: @Model.Item.Bids.OrderByDescending(i => i.Ammount).First().User.FirstName</p>
+    }
+}
+
+<form asp-action="BidItem" asp-route-ItemId="@Model.Item.ItemId" asp-controller="Home" method="post">
+    <div class="form-group">
+        <label asp-for="Bid.Ammount"></label>
+        <span asp-validation-for="Bid.Ammount"></span>
+        <input class="form-control" asp-for="Bid.Ammount">
+    </div>
+    <button>Submit</button>
+</form>

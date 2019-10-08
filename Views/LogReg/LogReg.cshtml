@@ -1,0 +1,50 @@
+﻿<partial name="_HeaderPartial"/>
+@model BeltExam.Models.LogReg
+<div class="main">
+    <div class="left">
+        <form asp-action="Register" asp-controller="LogReg" method="post">
+            <div class="form-group">
+                <label asp-for="Register.FirstName"></label>
+                <span asp-validation-for="Register.FirstName"></span>
+                <input class="form-control" asp-for="Register.FirstName">
+            </div>
+            <div class="form-group">
+                <label asp-for="Register.LastName"></label>
+                <span asp-validation-for="Register.LastName"></span>
+                <input class="form-control" asp-for="Register.LastName">
+            </div>
+            <div class="form-group">
+                <label asp-for="Register.Email"></label>
+                <span asp-validation-for="Register.Email"></span>
+                <input class="form-control" asp-for="Register.Email">
+            </div>
+            <div class="form-group">
+                <label asp-for="Register.Password"></label>
+                <span asp-validation-for="Register.Password"></span>
+                <input class="form-control" asp-for="Register.Password">
+            </div>
+            <div class="form-group">
+                <label asp-for="Register.Confirm"></label>
+                <span asp-validation-for="Register.Confirm"></span>
+                <input class="form-control" asp-for="Register.Confirm">
+            </div>
+            <button>Submit</button>
+        </form>
+    </div>
+
+    <div class="right">
+        <form asp-action="Login" asp-controller="LogReg" method="post">
+            <div class="form-group">
+                <label asp-for="Login.Email"></label>
+                <span asp-validation-for="Login.Email"></span>
+                <input class="form-control" asp-for="Login.Email">
+            </div>
+            <div class="form-group">
+                <label asp-for="Login.Password"></label>
+                <span asp-validation-for="Login.Password"></span>
+                <input class="form-control" asp-for="Login.Password">
+            </div>
+            <button>Submit</button>
+        </form>
+    </div>
+</div>

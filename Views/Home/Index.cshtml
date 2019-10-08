@@ -1,0 +1,43 @@
+<partial name="_HeaderPartial"/>
+@model List<Item>
+
+<div class="text-center">
+	<table class="table">
+	<thead>
+		<tr>
+		<th scope="col">Item</th>
+		<th scope="col">Seller</th>
+		<th scope="col">Top Bid</th>
+		<th scope="col">Time Remaining</th>
+		<th scope="col">Actions</th>
+		</tr>
+	</thead>
+	<tbody>
+		@{
+			foreach(var Item in Model)
+			{
+				<tr>
+					<th><a href="item/@Item.ItemId">@Item.Name</a></th>
+					<th>@Item.Seller.FirstName</th>
+					<th>$ @Item.Bids.OrderByDescending(i => i.Ammount).First().Ammount</th>
+					<th>@Item.TimeRemainingText</th>
+					<th>
+						@{
+							bool CanDelete = false;
+							if(Item.Seller.UserId == ViewBag.User.UserId)
+							{
+								CanDelete = true;
+							}
+							if(CanDelete)
+							{
+								<button onclick="location.href='@Url.Action("DeleteItem", "Home", new {ItemId = Item.ItemId})'">Delete</button>
+							}
+						}
+                    </th>
+				</tr>
+			}
+		}
+	</tbody>
+	</table>
+</div>
+<button onclick="location.href='@Url.Action("ItemForm", "Home")'">Add Item</button>

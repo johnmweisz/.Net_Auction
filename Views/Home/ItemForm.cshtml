@@ -1,0 +1,26 @@
+<partial name="_HeaderPartial"/>
+@model BeltExam.Models.Item
+
+<form asp-action="NewItem" asp-controller="Home" method="post">
+    <div class="form-group">
+        <label asp-for="Name"></label>
+        <span asp-validation-for="Name"></span>
+        <input class="form-control" asp-for="Name">
+    </div>
+    <div class="form-group">
+        <label asp-for="End"></label>
+        <span asp-validation-for="End"></span>
+        <input class="form-control" asp-for="End">
+    </div>
+    <div class="form-group">
+        <label asp-for="StartingBid"></label>
+        <span asp-validation-for="StartingBid"></span>
+        <input class="form-control" asp-for="StartingBid">
+    </div>
+    <div class="form-group">
+        <label asp-for="Description"></label>
+        <span asp-validation-for="Description"></span>
+        <input class="form-control" asp-for="Description">
+    </div>
+    <button>Submit</button>
+</form>
